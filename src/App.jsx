@@ -30,6 +30,7 @@ const copy = {
         'Software Engineering student at UDOM CIVE building polished mobile apps, reliable web platforms and practical backend systems.',
       primary: 'View My Work',
       secondary: 'Get In Touch',
+      cv: 'Download CV',
       portraitAlt: 'Adam Kayange portrait',
       stats: [
         ['3+', 'Years Coding'],
@@ -185,6 +186,7 @@ const copy = {
         'Mwanafunzi wa Software Engineering UDOM CIVE ninayejenga mobile apps, web platforms na backend systems zinazotumika vizuri.',
       primary: 'Tazama Kazi',
       secondary: 'Wasiliana Nami',
+      cv: 'Pakua CV',
       portraitAlt: 'Picha ya Adam Kayange',
       stats: [
         ['3+', 'Miaka ya Code'],
@@ -337,6 +339,28 @@ function App() {
     document.documentElement.dataset.theme = theme;
   }, [theme]);
 
+  useEffect(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion || !('IntersectionObserver' in window)) return undefined;
+
+    const sections = document.querySelectorAll('main section:not(#home) .section-inner');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    sections.forEach((section) => {
+      section.classList.add('scroll-reveal');
+      observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="app-shell min-h-screen font-sans overflow-x-hidden">
       <Navbar
@@ -346,13 +370,15 @@ function App() {
         theme={theme}
         setTheme={setTheme}
       />
-      <Hero t={t.hero} />
-      <About t={t.about} />
-      <Skills t={t.skills} />
-      <Projects t={t.projects} />
-      <Experience t={t.experience} />
-      <Services t={t.services} />
-      <Contact t={t.contact} />
+      <main>
+        <Hero t={t.hero} />
+        <About t={t.about} />
+        <Skills t={t.skills} />
+        <Projects t={t.projects} />
+        <Experience t={t.experience} />
+        <Services t={t.services} />
+        <Contact t={t.contact} />
+      </main>
       <Footer t={t.footer} />
     </div>
   );

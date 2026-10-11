@@ -1,8 +1,12 @@
 import React from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
 
 const projectVisuals = ['01', '02', '03', '04', '05', '06'];
 
 const Projects = ({ t }) => {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section id="projects" className="section-pad">
       <div className="section-inner">
@@ -12,7 +16,14 @@ const Projects = ({ t }) => {
 
         <div className="card-grid three mt-10">
           {t.items.map(([title, description, tags, links], index) => (
-            <article className="project-card" key={title}>
+            <motion.article
+              className="project-card"
+              key={title}
+              style={{ transformPerspective: 1100 }}
+              whileHover={reduceMotion ? undefined : { y: -7, rotateX: 1.5, scale: 1.01 }}
+              whileTap={reduceMotion ? undefined : { scale: 0.99 }}
+              transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+            >
               <div className="project-visual">
                 <span>{projectVisuals[index]}</span>
               </div>
@@ -28,13 +39,23 @@ const Projects = ({ t }) => {
                 <p>{description}</p>
                 <div className="project-actions">
                   {links.map(([label, href]) => (
-                    <a href={href} key={href} target="_blank" rel="noreferrer">
+                    <motion.a
+                      href={href}
+                      key={href}
+                      target="_blank"
+                      rel="noreferrer"
+                      whileHover={reduceMotion ? undefined : { y: -2 }}
+                      whileTap={reduceMotion ? undefined : { scale: 0.97 }}
+                    >
                       {label}
-                    </a>
+                      <motion.span whileHover={reduceMotion ? undefined : { x: 2, y: -2 }}>
+                        <ArrowUpRight size={15} aria-hidden="true" />
+                      </motion.span>
+                    </motion.a>
                   ))}
                 </div>
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
       </div>
