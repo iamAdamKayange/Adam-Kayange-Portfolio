@@ -33,7 +33,7 @@ const copy = {
       cv: 'Download CV',
       portraitAlt: 'Adam Kayange portrait',
       stats: [
-        ['3+', 'Years Coding'],
+        ['5+', 'Years Coding'],
         ['10+', 'Projects'],
         ['8+', 'Technologies'],
         ['2', 'Core Specialties']
@@ -125,7 +125,7 @@ const copy = {
         ['Freelance Full-Stack Developer', 'Self-Employed - Remote', '2023 - Present', 'Designing custom web and mobile apps for clients across Tanzania.', ['Flutter', 'React', 'Laravel', 'Firebase']],
         ['Mobile App Developer Intern', 'Tech Startup - Tanzania', '2023', 'Worked on Flutter interfaces, Firebase features and REST API integration.', ['Flutter', 'Firebase', 'REST']],
         ['BSc. Software Engineering', 'UDOM CIVE', '2022 - Present', 'Learning systems design, algorithms, databases and full-stack development.', ['Algorithms', 'OOP', 'DB Design']],
-        ['Started Coding Journey', 'Self-Taught - Online', '2021', 'Started with HTML, CSS and JavaScript before moving into mobile and backend work.', ['HTML', 'CSS', 'JS', 'Java']]
+        ['Started Coding Journey', 'Self-Taught - Online', '2021 - Present', 'Five-plus years of hands-on coding, from HTML, CSS and JavaScript to mobile and backend development.', ['HTML', 'CSS', 'JS', 'Java']]
       ]
     },
     services: {
@@ -189,7 +189,7 @@ const copy = {
       cv: 'Pakua CV',
       portraitAlt: 'Picha ya Adam Kayange',
       stats: [
-        ['3+', 'Miaka ya Code'],
+        ['5+', 'Miaka ya Code'],
         ['10+', 'Miradi'],
         ['8+', 'Teknolojia'],
         ['2', 'Maeneo Makuu']
@@ -281,7 +281,7 @@ const copy = {
         ['Freelance Full-Stack Developer', 'Self-Employed - Remote', '2023 - Sasa', 'Ninatengeneza web na mobile apps kwa wateja Tanzania.', ['Flutter', 'React', 'Laravel', 'Firebase']],
         ['Mobile App Developer Intern', 'Tech Startup - Tanzania', '2023', 'Nilifanya Flutter interfaces, Firebase features na REST API integration.', ['Flutter', 'Firebase', 'REST']],
         ['BSc. Software Engineering', 'UDOM CIVE', '2022 - Sasa', 'Najifunza systems design, algorithms, databases na full-stack development.', ['Algorithms', 'OOP', 'DB Design']],
-        ['Mwanzo wa Coding', 'Self-Taught - Online', '2021', 'Nilianza na HTML, CSS na JavaScript kabla ya mobile na backend.', ['HTML', 'CSS', 'JS', 'Java']]
+        ['Mwanzo wa Coding', 'Self-Taught - Online', '2021 - Sasa', 'Zaidi ya miaka mitano ya coding, kuanzia HTML, CSS na JavaScript hadi utengenezaji wa mobile apps na backend.', ['HTML', 'CSS', 'JS', 'Java']]
       ]
     },
     services: {
