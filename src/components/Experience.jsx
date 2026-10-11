@@ -1,6 +1,9 @@
 import React from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 
 const Experience = ({ t }) => {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section id="experience" className="section-pad alt-section">
       <div className="section-inner">
@@ -10,7 +13,12 @@ const Experience = ({ t }) => {
 
         <div className="timeline">
           {t.items.map(([title, company, period, description, techs]) => (
-            <article className="timeline-item" key={`${title}-${period}`}>
+            <motion.article
+              className="timeline-item"
+              key={`${title}-${period}`}
+              whileHover={reduceMotion ? undefined : { x: 4 }}
+              transition={{ duration: 0.2 }}
+            >
               <div className="timeline-head">
                 <div>
                   <h3>{title}</h3>
@@ -26,7 +34,7 @@ const Experience = ({ t }) => {
                   </span>
                 ))}
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
       </div>

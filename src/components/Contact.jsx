@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { GraduationCap, Mail, MapPin, Phone } from 'lucide-react';
 
 const contactItems = [
   ['Email', 'adamkayange223@email.com', 'mailto:adamkayange223@email.com'],
@@ -15,6 +17,8 @@ const socialLinks = [
   ['WhatsApp', 'whatsapp', 'https://wa.me/255629095954'],
   ['Instagram', 'instagram', 'https://www.instagram.com/adamkayangemusic/']
 ];
+
+const contactIcons = [Mail, Phone, MapPin, GraduationCap];
 
 const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
 const WEB3FORMS_ACCESS_KEY = '8efc1bf5-b535-40ec-8482-70f83403533c';
@@ -42,6 +46,7 @@ const SocialIcon = ({ name }) => (
 
 const Contact = ({ t }) => {
   const [submitStatus, setSubmitStatus] = useState('idle');
+  const reduceMotion = useReducedMotion();
 
   const toastMessage =
     submitStatus === 'sent' ? t.successToast : submitStatus === 'error' ? t.errorToast : '';
@@ -108,15 +113,26 @@ const Contact = ({ t }) => {
           <div>
             <h3 className="block-title">{t.getInTouch}</h3>
             <div className="contact-list">
-              {contactItems.map(([label, value, href]) => (
-                <a href={href} className="contact-item" key={label} target={href.startsWith('http') ? '_blank' : undefined} rel="noreferrer">
-                  <span>{label.slice(0, 1)}</span>
+              {contactItems.map(([label, value, href], index) => {
+                const Icon = contactIcons[index];
+
+                return (
+                <motion.a
+                  href={href}
+                  className="contact-item"
+                  key={label}
+                  target={href.startsWith('http') ? '_blank' : undefined}
+                  rel="noreferrer"
+                  whileHover={reduceMotion ? undefined : { x: 4 }}
+                >
+                  <span><Icon size={18} aria-hidden="true" /></span>
                   <div>
                     <small>{label}</small>
                     <strong>{value}</strong>
                   </div>
-                </a>
-              ))}
+                </motion.a>
+                );
+              })}
             </div>
             <div className="social-row">
               {socialLinks.map(([label, icon, href]) => (

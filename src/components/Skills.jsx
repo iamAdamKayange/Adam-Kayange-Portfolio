@@ -1,4 +1,6 @@
 import React from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { PanelsTopLeft, Braces, Smartphone, Database } from 'lucide-react';
 
 const proficiencyData = [
   ['Flutter / Dart', 90],
@@ -11,7 +13,11 @@ const proficiencyData = [
   ['MySQL / PostgreSQL', 78]
 ];
 
+const categoryIcons = [PanelsTopLeft, Braces, Smartphone, Database];
+
 const Skills = ({ t }) => {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section id="skills" className="section-pad alt-section">
       <div className="section-inner">
@@ -20,22 +26,30 @@ const Skills = ({ t }) => {
         <p className="section-intro">{t.intro}</p>
 
         <div className="card-grid four mt-10">
-          {t.categories.map(([name, skills], index) => (
-            <article className="feature-card skill-card" key={name}>
-              <span className="skill-number">{String(index + 1).padStart(2, '0')}</span>
-              <h3>{name}</h3>
-              <div className="chip-row">
-                {skills.map((skill) => (
-                  <span className="chip" key={skill}>
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
+          {t.categories.map(([name, skills], index) => {
+            const Icon = categoryIcons[index];
+
+            return (
+              <motion.article
+                className="feature-card skill-card"
+                key={name}
+                whileHover={reduceMotion ? undefined : { y: -5 }}
+                transition={{ duration: 0.22 }}
+              >
+                <div className="skill-card-heading">
+                  <span className="skill-icon"><Icon size={19} aria-hidden="true" /></span>
+                  <span className="skill-number">0{index + 1}</span>
+                </div>
+                <h3>{name}</h3>
+                <div className="chip-row">
+                  {skills.map((skill) => <span className="chip" key={skill}>{skill}</span>)}
+                </div>
+              </motion.article>
+            );
+          })}
         </div>
 
-        <div className="feature-card mt-12">
+        <div className="feature-card skill-proficiency mt-12">
           <h3>{t.proficiencyTitle}</h3>
           <div className="proficiency-grid">
             {proficiencyData.map(([name, value]) => (
@@ -45,7 +59,12 @@ const Skills = ({ t }) => {
                   <strong>{value}%</strong>
                 </div>
                 <div className="meter">
-                  <span style={{ width: `${value}%` }}></span>
+                  <motion.span
+                    initial={reduceMotion ? { width: `${value}%` } : { width: 0 }}
+                    whileInView={{ width: `${value}%` }}
+                    viewport={{ once: true, amount: 0.6 }}
+                    transition={{ duration: 0.8, ease: 'easeOut' }}
+                  />
                 </div>
               </div>
             ))}
