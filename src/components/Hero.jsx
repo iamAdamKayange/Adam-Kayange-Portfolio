@@ -91,7 +91,7 @@ const Hero = ({ t }) => {
             <div className="portrait-frame">
               {imageLoaded ? (
                 <img
-                  src="/adams.webp"
+                  src="/adam.webp"
                   alt={t.portraitAlt}
                   className="portrait-image"
                   fetchPriority="high"
