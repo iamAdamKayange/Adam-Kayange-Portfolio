@@ -326,7 +326,7 @@ const copy = {
 
 function App() {
   const [language, setLanguage] = useState(() => localStorage.getItem('language') || 'en');
-  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark');
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
   const t = useMemo(() => copy[language], [language]);
 
   useEffect(() => {

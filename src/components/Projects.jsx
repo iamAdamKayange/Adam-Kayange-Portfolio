@@ -24,8 +24,21 @@ const Projects = ({ t }) => {
               whileTap={reduceMotion ? undefined : { scale: 0.99 }}
               transition={{ type: 'spring', stiffness: 260, damping: 22 }}
             >
-              <div className="project-visual">
-                <span>{projectVisuals[index]}</span>
+              <div className={`project-visual project-visual-${index + 1}`} role="img" aria-label={`${title} project preview`}>
+                <div className="project-preview-bar">
+                  <span className="project-preview-brand">AK / WORK</span>
+                  <span className="project-preview-dots"><i /><i /><i /></span>
+                </div>
+                <div className="project-preview-canvas">
+                  <div className="project-preview-rail"><i /><i /><i /><i /></div>
+                  <div className="project-preview-main">
+                    <span className="project-preview-count">{projectVisuals[index]}</span>
+                    <strong>{title}</strong>
+                    <div className="project-preview-cards"><i /><i /><i /></div>
+                    <div className="project-preview-chart"><i /><i /><i /><i /><i /><i /><i /><i /></div>
+                  </div>
+                </div>
+                <span className="project-preview-caption">Selected work <b>↗</b></span>
               </div>
               <div className="project-body">
                 <div className="chip-row">
